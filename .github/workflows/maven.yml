@@ -1,0 +1,27 @@
+name: Java CI with Maven
+
+# This automates the running of the unit tests: every time you push a
+# commit or open a pull request, GitHub will build the project and run
+# every JUnit test in LoginTest.java automatically.
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build and run tests with Maven
+        run: mvn -B test --file pom.xml
