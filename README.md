@@ -2,7 +2,7 @@
 
 **Student:** Shahir Ahmed Khan (Shaya)
 **Student Number:** ST10526182
-**Module:** PRLD5121
+**Module:** PROG5121
 
 ## What this program does
 
