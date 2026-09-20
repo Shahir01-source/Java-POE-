@@ -1,4 +1,4 @@
-# PRLD5121 – PoE Part 1: Registration and Login Feature
+# PROG5121 – PoE Part 1: Registration and Login Feature
 
 **Student:** Shahir Ahmed Khan
 **Student Number:** ST10526182
