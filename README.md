@@ -54,6 +54,11 @@ last name during registration so the welcome message can be produced. Mention th
 assumption out loud in your video — it shows you understood the requirement instead
 of just copying code.
 
+
+**Student:** Shahir Ahmed Khan 
+**Student Number:** ST10526182
+**Module:** PROG5121
+
 ## What this program does
 
 This is a console-based Java application (no GUI) that lets a user register
