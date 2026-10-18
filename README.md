@@ -1,4 +1,4 @@
-# PRLD5121 – PoE: Registration, Login, and Sending Messages
+# PROG5121 – PoE: Registration, Login, and Sending Messages
 
 **Student:** Shahir Ahmed Khan 
 **Student Number:** ST10526182
