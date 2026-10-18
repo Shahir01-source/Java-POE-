@@ -54,69 +54,6 @@ last name during registration so the welcome message can be produced. Mention th
 assumption out loud in your video — it shows you understood the requirement instead
 of just copying code.
 
-## Build and run
-
-### 1. Install what you need
-- **JDK 25**: https://adoptium.net/
-- **Maven**: https://maven.apache.org/download.cgi (or use your IDE's bundled Maven)
-- **GitHub Desktop**: https://desktop.github.com/
-- A **GitHub account** signed up with your Connect account: https://github.com/
-
-### 2. Create the GitHub repository first
-1. Go to github.com → **New repository**.
-2. Name it something like `PoE-Part1-Registration-Login`.
-3. Leave it empty (no README/gitignore — you already have these files).
-4. Copy the repository URL.
-
-### 3. Get this project into that repository
-Using GitHub Desktop:
-1. Open GitHub Desktop → **File → Add local repository** → point it at this
-   `poe-part1` folder.
-2. If it says "this isn't a Git repository yet," click **create a repository here**.
-3. Under **Repository → Repository settings**, set the **Remote** to the GitHub URL
-   you copied.
-4. Write a commit summary (e.g. "Initial project setup") and click **Commit to main**.
-5. Click **Publish repository** (or **Push origin** if it's already published).
-
-You need a **minimum of six commits** for this part, so commit in small logical
-steps rather than one giant commit — for example:
-1. "Add Login class with username and password checks"
-2. "Add cell phone number validation"
-3. "Add registerUser method"
-4. "Add loginUser and returnLoginStatus methods"
-5. "Add Main console application"
-6. "Add JUnit tests"
-
-### 4. Open and run the project
-- In **NetBeans**, **IntelliJ IDEA**, or **VS Code** (with the Java extension),
-  open the `poe-part1` folder as a Maven project — it will read `pom.xml`
-  automatically and download the JUnit dependency.
-- To run QuickChat: run `ChatApp.java`.
-- To run the Part 1 login app: run `Main.java`.
-- To run all tests: run `mvn test` in this folder, or use the IDE test runner.
-
-### 5. Automated testing (already set up for you)
-The `.github/workflows/maven.yml` workflow builds with Java 25 and runs all JUnit
-tests whenever you push a commit or open a pull request against `main`. Results
-appear under the **Actions** tab of the GitHub repository.
-
-### 6. Video presentation
-Record an unlisted YouTube video (or similar) with **your own voice, no AI voice**,
-covering:
-- A run of the console app (registering, then logging in).
-- A walk-through of `Login.java` explaining your logic and flow, using the
-  explanation above as a guide — but **explain it in your own words**.
-- A quick look at the passing tests in `LoginTest.java` and/or the green check
-  on the GitHub Actions tab.
-
-### 7. Submit
-Push everything, then submit the GitHub repository link on Arc for Part 1.
-# PROG5121 – PoE: Registration, Login, and Sending Messages
-
-**Student:** Shahir Ahmed Khan 
-**Student Number:** ST10526182
-**Module:** PROG5121
-
 ## What this program does
 
 This is a console-based Java application (no GUI) that lets a user register
