@@ -55,6 +55,9 @@ public class Message {
     }
 
     public static String checkMessageLength(String messageText) {
+        if (messageText == null) {
+            return "Message cannot be null.";
+        }
         if (messageText.length() <= 250) {
             return "Message ready to send.";
         }
@@ -75,6 +78,9 @@ public class Message {
     }
 
     public String sentMessage(int choice) {
+        if (!"Pending".equals(status)) {
+            return "Message has already been processed.";
+        }
         switch (choice) {
             case 1:
                 status = "Sent";
