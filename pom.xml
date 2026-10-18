@@ -50,7 +50,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>Main</mainClass>
+                            <mainClass>ChatApp</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

@@ -1,8 +1,7 @@
 name: Java CI with Maven
 
-# This automates the running of the unit tests: every time you push a
-# commit or open a pull request, GitHub will build the project and run
-# every JUnit test in LoginTest.java automatically.
+# Build the Java 25 project and run the complete JUnit test suite on pushes
+# and pull requests targeting main.
 on:
   push:
     branches: [ "main" ]

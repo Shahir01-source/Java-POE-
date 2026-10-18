@@ -1,7 +1,8 @@
-# PoE Part 1 — Registration and Login Feature
+# PoE Part 2 — QuickChat
 
-A console-based Java application (no GUI) that registers a user and logs them in,
-built with Maven and tested with JUnit 5.
+A console-based Java application that registers and authenticates a user, then
+supports composing, sending, disregarding, and storing chat messages. Built with
+Maven and tested with JUnit 5 on Java 25.
 
 ## What's in this project
 
@@ -9,12 +10,26 @@ built with Maven and tested with JUnit 5.
 poe-part1/
 ├── pom.xml                              Maven build file (JUnit 5 dependency, test runner)
 ├── .github/workflows/maven.yml          Runs the tests automatically on every push (GitHub Actions)
-├── src/main/java/Login.java             The Login class — all validation, registration, login logic
-├── src/main/java/Main.java              Console app that uses Login (menus, Scanner input)
-└── src/test/java/LoginTest.java         JUnit tests using the exact test data from the brief
+├── src/main/java/Login.java             Registration and login validation
+├── src/main/java/Main.java              Part 1 registration and login console app
+├── src/main/java/ChatApp.java           Part 2 QuickChat console app
+├── src/main/java/Message.java           Message validation, hashing, lifecycle, and storage
+├── src/test/java/LoginTest.java         Registration and login tests
+└── src/test/java/MessageTest.java       Message validation and lifecycle tests
 ```
 
-## How the logic works (for your video explanation)
+## Message workflow
+
+`ChatApp` requires registration and a successful login before opening QuickChat.
+Users can enter a recipient number and a message of up to 250 characters, then
+send, disregard, or store it. Sent messages can be listed in the current run;
+stored messages are written to `storedMessages.json` in the working directory.
+
+`Message` generates a 10-digit ID and a hash from the ID prefix, message number,
+and first/last message words. Recipient numbers are checked using the existing
+international phone-number validation in `Login`.
+
+## Login logic
 
 - **`checkUserName`**: returns `true` only if the username contains an underscore
   AND is 5 characters or fewer.
@@ -39,10 +54,10 @@ last name during registration so the welcome message can be produced. Mention th
 assumption out loud in your video — it shows you understood the requirement instead
 of just copying code.
 
-## Step-by-step setup
+## Build and run
 
 ### 1. Install what you need
-- **JDK 17+**: https://adoptium.net/
+- **JDK 25**: https://adoptium.net/
 - **Maven**: https://maven.apache.org/download.cgi (or use your IDE's bundled Maven)
 - **GitHub Desktop**: https://desktop.github.com/
 - A **GitHub account** signed up with your Connect account: https://github.com/
@@ -76,15 +91,14 @@ steps rather than one giant commit — for example:
 - In **NetBeans**, **IntelliJ IDEA**, or **VS Code** (with the Java extension),
   open the `poe-part1` folder as a Maven project — it will read `pom.xml`
   automatically and download the JUnit dependency.
-- To run the console app: run `Main.java`.
-- To run the tests: run `mvn test` in a terminal in this folder, or right-click
-  `LoginTest.java` → **Run Tests** in your IDE.
+- To run QuickChat: run `ChatApp.java`.
+- To run the Part 1 login app: run `Main.java`.
+- To run all tests: run `mvn test` in this folder, or use the IDE test runner.
 
 ### 5. Automated testing (already set up for you)
-The `.github/workflows/maven.yml` file means that every time you push a commit to
-GitHub, GitHub Actions will automatically build the project and run every test in
-`LoginTest.java`. You can see the results under the **Actions** tab of your
-repository — this is what satisfies the "automate these tests" requirement.
+The `.github/workflows/maven.yml` workflow builds with Java 25 and runs all JUnit
+tests whenever you push a commit or open a pull request against `main`. Results
+appear under the **Actions** tab of the GitHub repository.
 
 ### 6. Video presentation
 Record an unlisted YouTube video (or similar) with **your own voice, no AI voice**,
