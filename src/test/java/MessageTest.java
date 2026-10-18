@@ -1,8 +1,7 @@
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
 
 public class MessageTest {
 
@@ -22,6 +21,11 @@ public class MessageTest {
         String longMessage = "a".repeat(260);
         String expected = "Message exceeds 250 characters by 10; please reduce the size.";
         assertEquals(expected, Message.checkMessageLength(longMessage));
+    }
+
+    @Test
+    public void testMessageLength_NullInput() {
+        assertEquals("Message cannot be null.", Message.checkMessageLength(null));
     }
 
     @Test
@@ -79,6 +83,15 @@ public class MessageTest {
     public void testSentMessage_Send() {
         Message message = new Message("+27718693002", "Hi Mike, can you join us for dinner tonight?");
         assertEquals("Message successfully sent.", message.sentMessage(1));
+    }
+
+    @Test
+    public void testSentMessage_CannotProcessTwice() {
+        Message message = new Message("+27718693002", "Hi Mike, can you join us for dinner tonight?");
+        message.sentMessage(1);
+
+        assertEquals("Message has already been processed.", message.sentMessage(1));
+        assertEquals(1, Message.returnTotalMessages());
     }
 
     @Test

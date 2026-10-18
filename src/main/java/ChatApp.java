@@ -75,7 +75,7 @@ public class ChatApp {
                     break;
 
                 case "2":
-                    System.out.println("Coming Soon.");
+                    System.out.println(Message.printMessages());
                     break;
 
                 case "3":
