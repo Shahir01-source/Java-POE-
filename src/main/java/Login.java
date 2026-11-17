@@ -139,6 +139,13 @@ public class Login {
     }
 
     /**
+     * Returns the cell number stored during registration.
+     */
+    public String getCellNumber() {
+        return cellNumber;
+    }
+
+    /**
      * Returns the message to display after a login attempt.
      *
      * @param loginSuccess the result returned by loginUser()
