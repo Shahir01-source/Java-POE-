@@ -81,23 +81,23 @@ public class Message {
         if (!"Pending".equals(status)) {
             return "Message has already been processed.";
         }
-        switch (choice) {
-            case 1:
-                status = "Sent";
-                totalMessagesSent++;
-                sentMessages.add(this);
-                return "Message successfully sent.";
-            case 2:
-                status = "Disregarded";
-                return "Press 0 to delete the message.";
-            case 3:
-                status = "Stored";
-                storedMessages.add(this);
-                storeMessage();
-                return "Message successfully stored.";
-            default:
-                return "Invalid option selected.";
+        if (choice == 1) {
+            status = "Sent";
+            totalMessagesSent++;
+            sentMessages.add(this);
+            return "Message successfully sent.";
         }
+        if (choice == 2) {
+            status = "Disregarded";
+            return "Press 0 to delete the message.";
+        }
+        if (choice == 3) {
+            status = "Stored";
+            storedMessages.add(this);
+            storeMessage();
+            return "Message successfully stored.";
+        }
+        return "Invalid option selected.";
     }
 
     public static String printMessages() {
