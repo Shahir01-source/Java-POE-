@@ -3,13 +3,7 @@
  *
  * Handles user registration and login for Part 1 of the PoE.
  *
- * Design note: the task brief only lists username, password and cell number
- * as the fields captured during registration, but the login success message
- * requires a first name and last name ("Welcome <first name>, <last name> ...").
- * Since the brief doesn't show where those are captured, this class also
- * collects first name and last name at registration time so that the login
- * welcome message can be produced. Mention this assumption in your video.
- *
+ 
  * This is a plain console-based, GUI-free class as required by the brief.
  */
 public class Login {
@@ -23,16 +17,6 @@ public class Login {
     private String cellNumber;
     private boolean userRegistered = false;
 
-    /**
-     * Regex used to validate a South African style cell number entered with
-     * an international country code, e.g. "+27838968976".
-     * Structure: '+' then a 1-3 digit country code, then up to 10 further digits
-     * for the subscriber number (matches the brief's "the number ... is no more
-     * than ten characters long" once the country code is separated out).
-     *
-     * Regex syntax reference: Oracle Java Platform, Standard Edition
-     * Pattern class documentation - https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html
-     */
     private static final String CELL_NUMBER_REGEX = "^\\+\\d{1,3}\\d{1,10}$";
 
     // ---------- Validation methods ----------

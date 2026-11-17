@@ -6,7 +6,12 @@ import java.util.Scanner;
 public class ChatApp {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        try (Scanner scanner = new Scanner(System.in)) {
+            run(scanner);
+        }
+    }
+
+    private static void run(Scanner scanner) {
         Login login = new Login();
 
         boolean registered = false;
@@ -44,7 +49,6 @@ public class ChatApp {
 
         if (!loginSuccess) {
             System.out.println("You must log in successfully before you can send messages. Exiting.");
-            scanner.close();
             return;
         }
 
@@ -64,32 +68,23 @@ public class ChatApp {
             String choice = scanner.nextLine().trim();
 
             switch (choice) {
-                case "1":
+                case "1" -> {
                     if (messagesCreated >= messageLimit) {
                         System.out.println("You've already entered the " + messageLimit
                                 + " message(s) you asked for this session.");
-                        break;
+                    } else {
+                        messagesCreated++;
+                        composeMessage(scanner);
                     }
-                    messagesCreated++;
-                    composeMessage(scanner);
-                    break;
-
-                case "2":
-                    System.out.println(Message.printMessages());
-                    break;
-
-                case "3":
-                    running = false;
-                    break;
-
-                default:
-                    System.out.println("Please enter 1, 2 or 3.");
+                }
+                case "2" -> System.out.println(Message.printMessages());
+                case "3" -> running = false;
+                default -> System.out.println("Please enter 1, 2 or 3.");
             }
         }
 
         System.out.println("\nTotal messages sent this session: " + Message.returnTotalMessages());
         System.out.println(Message.printMessages());
-        scanner.close();
     }
 
     private static void composeMessage(Scanner scanner) {
