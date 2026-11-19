@@ -3,6 +3,7 @@
  *
  * Handles user registration and login for Part 1 of the PoE.
  *
+ 
  * This is a plain console-based, GUI-free class as required by the brief.
  */
 public class Login {
@@ -16,16 +17,6 @@ public class Login {
     private String cellNumber;
     private boolean userRegistered = false;
 
-    /**
-     * Regex used to validate a South African style cell number entered with
-     * an international country code, e.g. "+27838968976".
-     * Structure: '+' then a 1-3 digit country code, then up to 10 further digits
-     * for the subscriber number (matches the brief's "the number ... is no more
-     * than ten characters long" once the country code is separated out).
-     *
-     * Regex syntax reference: Oracle Java Platform, Standard Edition
-     * Pattern class documentation - https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html
-     */
     private static final String CELL_NUMBER_REGEX = "^\\+\\d{1,3}\\d{1,10}$";
 
     // ---------- Validation methods ----------
@@ -129,6 +120,13 @@ public class Login {
             return false;
         }
         return this.username.equals(username) && this.password.equals(password);
+    }
+
+    /**
+     * Returns the cell number stored during registration.
+     */
+    public String getCellNumber() {
+        return cellNumber;
     }
 
     /**
